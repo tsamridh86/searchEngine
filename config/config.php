@@ -39,13 +39,27 @@ class connector
   		return $result;
   	}
 
-
+    public function getLastestId ()
+    {
+      $id = $this->executeQuery("select max(id) as max from files");
+      $id = $id->fetch_assoc();
+      $id = $id['max'];
+      if($id != NULL) return  $id+1;
+      else return 1;
+    }
   }
 
   function checkExtension($extension)
   {
+    $imageExtensions = array("jpg", "png", "bmp", "gif");
+    $audioExtensions = array("mp3","wav","wma");
+    $videoExtensions = array("avi", "mov", "mp4", "wmv", "3gp" );
     if($extension == "txt") return "text";
     else if (in_array($extension, $imageExtensions)) return "image";
+    else if ($extension == "pdf") return "pdf";
+    else if (in_array($extension, $audioExtensions)) return "audio";
+    else if (in_array($extension, $videoExtensions)) return "video";
+    else return "others";
   }
 
   //this function calculates the number of digits of a number, this is used the algorithms below

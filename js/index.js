@@ -67,8 +67,8 @@ $("#search").click(function(){
 			var array = JSON.parse(response);
 			if ( array == null )
 			{
-				$("#mainContent").append("<div class='col s12 m6'><div class='card white darken-1'><div class='card-content black-text'>Sorry! No files found on server :(</div></div></div>");
-				$('#mainContent').append("</div>");
+				$("#mainContent").append("<div class='col s12 m6'><div class='card white darken-1'><div class='card-content black-text'><p>Sorry! No files found on server :(</p></div></div></div>");
+				$('#mainContent').fadeIn();
 				return ;
 			}
 			var content;

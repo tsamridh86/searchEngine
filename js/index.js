@@ -6,13 +6,18 @@ $(document).ready(function() {
 		$(".hidden").toggle("slow");
 	});
 
+String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}
+
 function createCard (fileName, downloadLocation, category , dateModified)
 {
-	return  "<div class='card white darken-1'>"+
+	return  "<div class='col s12 m6'>"+
+			"<div class='card white darken-1'>"+
 			" <div class='card-content black-text'>"+
-			"<a href='"+downloadLocation+"' >"+fileName+"</a>"+
-			category+Date(dateModified)+
-			"</div>"+"</div>";
+			"<span class='card-title'><a href='"+downloadLocation+"' >"+fileName+"</a></span>"+
+			"<p> File Type :"+category.capitalize()+"</p>"+Date(dateModified)+
+			"</div>"+"</div>"+"</div>";
 	
 }
 
@@ -57,11 +62,13 @@ $("#search").click(function(){
 		type: 'post',
 		success:function (response)
 		{
+			$('#mainContent').hide();
 			$('#mainContent').empty();
 			var array = JSON.parse(response);
 			if ( array == null )
 			{
-				$("#mainContent").append("sorry no files found");
+				$("#mainContent").append("<div class='col s12 m6'><div class='card white darken-1'><div class='card-content black-text'>Sorry! No files found on server :(</div></div></div>");
+				$('#mainContent').append("</div>");
 				return ;
 			}
 			var content;
@@ -70,6 +77,8 @@ $("#search").click(function(){
 				content = createCard(array[i]['fileName'],array[i]['downloadLocation'],array[i]['category'] , array[i]['dateModified']);
 				$("#mainContent").append(content);
 			}
+			$('#mainContent').fadeIn();
+
 		}
 	});
 });

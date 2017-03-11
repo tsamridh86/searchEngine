@@ -48,7 +48,7 @@
 							<div class="input-field col s12 m5 hidden">
 								<select id="sortCategory">
 									<option value="" disabled selected>Choose your option</option>
-									<option value="modifiedDate">Date modified</option>
+									<option value="dateModified">Date modified</option>
 									<option value="fileName">Name</option>
 									<option value="category">Category</option>
 								</select>
@@ -59,7 +59,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="mainContent">
+		<div id="mainContent" class="row">
 		</div>
 		<div id="addModal" class="modal">
 			<div class="modal-content">

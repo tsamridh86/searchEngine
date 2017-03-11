@@ -7,7 +7,11 @@
 	else $flag++;		
 	if(!empty($_POST['category'])) $query = $query . "category = '". $_POST['category'] . "' and ";
 	else $flag++;
-	if(!empty($_POST['sort'])) $query = $query. "order by ". $_POST['sort'] . " and ";
+	if(!empty($_POST['sort']))
+	{
+		if($flag == 2) $query = substr($query,0,-6);
+		$query = $query. "order by ". $_POST['sort'] . " and ";
+	}
 	else $flag++;
 	if( $flag == 3 ) $query = substr($query,0,-6);
 	else $query = substr($query,0,-4);

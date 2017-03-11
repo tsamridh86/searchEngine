@@ -15,5 +15,4 @@
     	$connect->executeQuery($query);
     	echo "File Uploaded Successfully!";
     }
-    //date("Y-m-d",$timestamp)
 ?>

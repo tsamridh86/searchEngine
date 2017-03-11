@@ -5,11 +5,17 @@ $(document).ready(function() {
 	$(".more").click(function(){
 		$(".hidden").toggle("slow");
 	});
-var content = "<div class='card white darken-1'>"+
+
+function createCard (fileName, downloadLocation, category , dateModified)
+{
+	return  "<div class='card white darken-1'>"+
 			" <div class='card-content black-text'>"+
-			"This is a new card that i made"+
+			"<a href='"+downloadLocation+"' >"+fileName+"</a>"+
+			category+Date(dateModified)+
 			"</div>"+"</div>";
-$("#mainContent").append(content);
+	
+}
+
 
 //function to upload the file
 $("#uploadFile").click(function(){
@@ -51,7 +57,19 @@ $("#search").click(function(){
 		type: 'post',
 		success:function (response)
 		{
-			alert(response);
+			$('#mainContent').empty();
+			var array = JSON.parse(response);
+			if ( array == null )
+			{
+				$("#mainContent").append("sorry no files found");
+				return ;
+			}
+			var content;
+			for( i = 0 ; i < array.length ; i ++)
+			{
+				content = createCard(array[i]['fileName'],array[i]['downloadLocation'],array[i]['category'] , array[i]['dateModified']);
+				$("#mainContent").append(content);
+			}
 		}
 	});
 });

@@ -23,7 +23,7 @@
 								<label for="query">Enter your query</label>
 							</div>
 							<div class="col s1 m1">
-								<a class="btn-floating waves-effect waves-light red shiftDown"><i class="material-icons">search</i></a>
+								<a class="btn-floating waves-effect waves-light red shiftDown" id="search"><i class="material-icons">search</i></a>
 							</div>
 						</div>
 						<div class="row">
@@ -34,8 +34,8 @@
 								<a class="waves-effect waves-light btn more">more</a>
 							</div>
 							<div class="input-field col s12 m5 hidden">
-								<select>
-									<option value="" disabled selected>Choose your option</option>
+								<select id="searchCategory">
+									<option value="none" disabled selected>Choose your option</option>
 									<option value="text">Text file</option>
 									<option value="image">Image File</option>
 									<option value="pdf">PDF document</option>
@@ -46,10 +46,10 @@
 								<label>Select Category</label>
 							</div>
 							<div class="input-field col s12 m5 hidden">
-								<select>
+								<select id="sortCategory">
 									<option value="" disabled selected>Choose your option</option>
-									<option value="time">Date modified</option>
-									<option value="name">Name</option>
+									<option value="modifiedDate">Date modified</option>
+									<option value="fileName">Name</option>
 									<option value="category">Category</option>
 								</select>
 								<label>Sort by</label>
@@ -82,38 +82,6 @@
 			</div>
 		</div>
 	</body>
-	<script type="text/javascript">
-	$(document).ready(function() {
-	$('select').material_select();
-	$('.modal').modal();
-	});
-	$(".more").click(function(){
-		$(".hidden").toggle("slow");
-	});
-	var content = "<div class='card white darken-1'>"+
-						" <div class='card-content black-text'>"+
-								"This is a new card that i made"
-						"</div>"+
-				"</div>";
-	$("#mainContent").append(content);
-	$("#uploadFile").click(function(){
-		var fileData = $("#uploadTarget").prop('files')[0];
-		var formData = new FormData();
-		formData.append('file',fileData);
-		formData.append('sth',"lol");
-		$.ajax({
-			url : 'addFile.php',
-			dataType : 'text' , //what to expect from the server
-			cache : false,
-			contentType : false,
-			processData : false,
-			data : formData,
-			type: 'post',
-			success : function(response)
-			{
-				alert(response);
-			}
-		});
-	});
+	<script type="text/javascript" src="js/index.js">
 	</script>
 </html>

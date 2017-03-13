@@ -27,6 +27,7 @@
 			$output[$i]['downloadLocation'] = "uploads/".$row['id'].substr($fileName, -4);
 			$output[$i]['category'] = $row['category'];
 			$output[$i]['dateModified'] = $row['dateModified'];
+			$output[$i]['fileId'] = $row['id'];
 			$i++;
 		}
 		echo json_encode($output);

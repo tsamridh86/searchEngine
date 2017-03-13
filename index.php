@@ -28,7 +28,7 @@
 						</div>
 						<div class="row">
 							<div class="col s6 m1">
-								<a class="btn-floating waves-effect waves-light red" href="#addModal"><i class="material-icons">add</i></a>
+								<a class="btn-floating waves-effect waves-light red" id="setting" href="#modal"><i class="material-icons">settings</i></a>
 							</div>
 							<div class="col s6 m1">
 								<a class="waves-effect waves-light btn more">more</a>
@@ -61,27 +61,74 @@
 		</div>
 		<div id="mainContent" class="row">
 		</div>
-		<div id="addModal" class="modal">
+		<div id="modal" class="modal">
 			<div class="modal-content">
-				<h4>Add New Document</h4>
-				<form action="" method="post" enctype="multipart/form-data">
-					<div class="file-field input-field">
-						<div class="btn">
-							<span>File</span>
-							<input type="file" id="uploadTarget">
-						</div>
-						<div class="file-path-wrapper">
-							<input class="file-path validate" type="text">
+				<div class="row">
+					<div class="col s12">
+						<ul class="tabs">
+							<li class="tab col s4"><a id="init" href="#add">add</a></li>
+							<li class="tab col s4"><a href="#update">update</a></li>
+							<li class="tab col s4"><a href="#delete">delete</a></li>
+						</ul>
+					</div>
+					<div id="add" class="col s12">
+						<p><h4>Add New Document</h4></p>
+						<form action="" method="post" enctype="multipart/form-data">
+							<div class="file-field input-field">
+								<div class="btn">
+									<span>File</span>
+									<input type="file" id="uploadTarget">
+								</div>
+								<div class="file-path-wrapper">
+									<input class="file-path validate" type="text">
+								</div>
+							</div>
+						</form>
+						<div class="modal-footer">
+							<a href="#!"  id="uploadFile" class=" modal-action modal-close waves-effect waves-green btn-flat">Upload</a>
+							<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
 						</div>
 					</div>
-				</form>
-			</div>
-			<div class="modal-footer">
-				<a href="#!"  id="uploadFile" class=" modal-action modal-close waves-effect waves-green btn-flat">Upload</a>
-				<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+					<div id="update" class="col s12">
+						<p><h4>Update an Existing Document</h4></p>
+						<form action="" method="post" enctype="multipart/form-data">
+							<div class="input-field">
+								<input placeholder="Type here" id="updateId" type="number" class="validate" >
+								<label for="updateId">Enter the ID of the file to be replaced</label>
+							</div>
+							<div class="file-field input-field">
+								<div class="btn">
+									<span>File</span>
+									<input type="file" id="updateTarget">
+								</div>
+								<div class="file-path-wrapper">
+									<input class="file-path validate" type="text">
+								</div>
+							</div>
+						</form>
+						<div class="modal-footer">
+							<a href="#!"  id="updateFile" class=" modal-action modal-close waves-effect waves-green btn-flat">Update</a>
+							<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+						</div>
+					</div>
+					<div id="delete" class="col s12">
+						<p><h4>Delete an Existing Document</h4></p>
+						<form action="" method="post" enctype="multipart/form-data">
+							<div class="input-field">
+								<input placeholder="Type here" id="deleteId" type="number" class="validate">
+								<label for="deleteId">Enter the ID of the file to be deleted</label>
+							</div>
+						</form>
+						<div class="modal-footer">
+							<a href="#!"  id="deleteFile" class=" modal-action modal-close waves-effect waves-green btn-flat">Delete</a>
+							<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-	</body>
-	<script type="text/javascript" src="js/index.js">
-	</script>
+	</div>
+</body>
+<script type="text/javascript" src="js/index.js">
+</script>
 </html>

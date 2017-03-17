@@ -10,6 +10,7 @@
 	if(!empty($_POST['sort']))
 	{
 		if($flag == 2) $query = substr($query,0,-6);
+		else 	$query = substr($query,0,-4);
 		$query = $query. "order by ". $_POST['sort'] . " and ";
 	}
 	else $flag++;

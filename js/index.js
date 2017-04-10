@@ -23,11 +23,25 @@ function createCard (fileName, downloadLocation, category , dateModified , fileI
 	return  "<div class='col s12 m6'>"+
 			"<div class='card white darken-1'>"+
 			" <div class='card-content black-text'>"+
-			"<span class='card-title'><a href='"+downloadLocation+"' >"+fileName+"</a></span>"+
+			"<span class='card-title'><a href='"+downloadLocation+"' >"+fileName+"</a><a class='right link' data-file-id = '"+fileId+"' onclick='updateFile(this);'><i class='material-icons'>update</i></a><a class='right link' data-file-id = '"+fileId+"' onclick='deleteFile(this);'><i class='material-icons'>delete</i></a></a></span>"+
 			"<p> File Type :"+category.capitalize()+"</p>"+
-			"<p> File Id : "+fileId+"</p>"+Date(dateModified)+
+			"</p>"+Date(dateModified)+
 			"</div>"+"</div>"+"</div>";
 	
+}
+
+function updateFile(element)
+{
+	var fileId = $(element).data("file-id");
+	$("#update").modal("open");
+	$("#updateFile").data("file-id",fileId);
+}
+
+function deleteFile(element)
+{
+	var fileId = $(element).data("file-id");
+	$("#delete").modal("open");
+	$("#deleteFile").data("file-id",fileId);
 }
 
 //function to upload the file
@@ -55,10 +69,12 @@ $("#uploadFile").click(function(){
 		});
 	});
 
+
+
 //function to update the file
 $("#updateFile").click(function(){
 	var fileData = $("#updateTarget").prop('files')[0];
-	var fileId = $("#updateId").val();
+	var fileId = $("#updateFile").data("file-id");
 	if (!fileId)
 	{
 		alert("Replacement Id Not Found");
@@ -90,7 +106,7 @@ $("#updateFile").click(function(){
 
 //function to delete the file
 $("#deleteFile").click(function(){
-	var fileId = $("#deleteId").val();
+	var fileId = $("#deleteFile").data("file-id");
 	if(!fileId)
 	{
 		alert("No File to be deleted");
